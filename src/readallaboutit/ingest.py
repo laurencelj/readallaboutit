@@ -1,15 +1,21 @@
-import sys
 import os
-sys.path.insert(0, r"C:\git repos\readallaboutit\src")
+import sys
+from dotenv import load_dotenv
 
+# 1. Load the environment variables immediately
+load_dotenv()
+
+# 2. Dynamically find the project root 'src' directory
+current_dir = os.path.dirname(os.path.abspath(__file__))  # src/readallaboutit
+src_dir = os.path.dirname(current_dir)                    # src
+sys.path.insert(0, src_dir)
+
+# 3. NOW safely import your local modules and external dependencies
 import feedparser
 import hashlib
 import yaml
 from datetime import datetime, timezone
-from dotenv import load_dotenv
 from readallaboutit.store import store_articles
-
-load_dotenv()
 
 CONFIG_PATH = os.path.join(
     os.path.dirname(__file__), '..', '..', 'config', 'feeds.yaml'
