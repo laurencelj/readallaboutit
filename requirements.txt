@@ -1,0 +1,4 @@
+feedparser==6.0.12
+supabase==2.31.0
+PyYAML==6.0
+python-dotenv==0.20.0
